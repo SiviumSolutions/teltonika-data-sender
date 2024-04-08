@@ -127,7 +127,7 @@ EOF
 echo "The configuration was updated successfully."
 echo "installing python..."
 
-pokg update
+opkg update
 opkg install python3-light
 
 echo "DONE."
