@@ -130,4 +130,26 @@ echo "installing python..."
 pokg update
 opkg install python3-light
 
-echo "Python installed"
+echo "DONE."
+
+echo "Installing script..."
+wget https://raw.githubusercontent.com/SiviumSolutions/teltonika-data-sender/main/main.py -O /storage/scripts/updatemodbus.py
+
+chmod +x /storage/scripts/updatemodbus.py
+echo "DONE."
+
+echo "Setup autostart..."
+if [ ! -f /etc/rc.local ]; then
+    echo "#!/bin/sh -e" > /etc/rc.local
+    echo "exit 0" >> /etc/rc.local
+    chmod +x /etc/rc.local
+fi
+
+sed -i "/^exit 0/i python /storage/scripts/updatemodbus.py &" /etc/rc.local
+
+echo "SUCCESS"
+
+
+echo "Rebooting..."
+
+reboot
