@@ -230,7 +230,10 @@ if [ ! -f /etc/rc.local ]; then
     chmod +x /etc/rc.local
 fi
 
-sed -i "/^exit 0/i python /storage/scripts/updatemodbus.py &" /etc/rc.local
+# Check if the command is already present, and add it only if it's missing
+if ! grep -q "python /storage/scripts/updatemodbus.py" /etc/rc.local; then
+    sed -i "/^exit 0/i python /storage/scripts/updatemodbus.py" /etc/rc.local
+fi
 
 echo "SUCCESS"
 
