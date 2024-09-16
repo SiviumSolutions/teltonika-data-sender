@@ -214,8 +214,8 @@ opkg install python3-light
 echo "DONE."
 
 echo "Installing script..."
+mkdir -p /storage/scripts # Ensure the directory exists
 wget https://raw.githubusercontent.com/SiviumSolutions/teltonika-data-sender/main/main.py -O /storage/scripts/updatemodbus.py
-
 chmod +x /storage/scripts/updatemodbus.py
 echo "DONE."
 
