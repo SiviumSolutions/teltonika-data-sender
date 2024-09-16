@@ -5,7 +5,7 @@ if [ "$(id -u)" != "0" ]; then
    exit 1
 fi
 
-if [ "$#" -ne 3 ]; then
+if [ "$#" -ne 5 ]; then
     echo "Using $0 <mqtt_host> <mqtt_port> <device_id> <user> <password>"
     exit 1
 fi
