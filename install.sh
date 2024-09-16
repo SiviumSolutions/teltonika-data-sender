@@ -206,12 +206,16 @@ config modbus 'modbus'
 EOF
 
 echo "The configuration was updated successfully."
-echo "installing python..."
-
-opkg update
-opkg install python3-light
-
-echo "DONE."
+# Check if Python is installed
+echo "Checking if Python is installed..."
+if command -v python3 > /dev/null 2>&1; then
+    echo "Python is already installed."
+else
+    echo "Python is not installed. Installing python..."
+    opkg update
+    opkg install python3-light
+    echo "Python installation DONE."
+fi
 
 echo "Installing script..."
 mkdir -p /storage/scripts # Ensure the directory exists
