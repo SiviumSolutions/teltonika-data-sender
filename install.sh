@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if [ "$(id -u)" != "0" ]; then
    echo "This script must be run as root" 1>&2
@@ -6,7 +6,7 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 if [ "$#" -ne 5 ]; then
-    echo "Using $0 <mqtt_host> <mqtt_port> <device_id> <user> <password>"
+    echo "Usage: $0 <mqtt_host> <mqtt_port> <device_id> <user> <password>"
     exit 1
 fi
 
